@@ -152,12 +152,12 @@
 		<property name="filterChainDefinitions">
 			<value>
 				<!--  anon 匿名访问 -->
-				/login.do=anon
-				/login.jsp=anon
+				<!--/login.do=anon
+				/login.jsp=anon-->
 
 				<!-- 配置退出的操作 -->
-				/logout.do = logout
-
+			<!--	/logout.do = logout
+-->
 				<!-- 配置权限 -->
 				<!--/test.do=perms["user:list"]-->
 				<!--/test2.do=perms["user:ddd"]-->
@@ -167,7 +167,7 @@
 				-->
 				<!--/**=authc-->
 				<!-- 使用rememberMe功能时，需要使用user过滤器，包含认证和rememberMe功能 -->
-				/**=user
+				<!--/**=user-->
 				<!--  /login=anon
                  /user/admin*=authc
                  /user/student*/**=roles[teacher]
