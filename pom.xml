@@ -193,6 +193,14 @@
             <version>1.2.5</version>
         </dependency>
 
+
+        <!--七牛上传-->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.2.11</version>
+        </dependency>
+
     </dependencies>
 
     <build>
