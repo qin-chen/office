@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.qfedu.dao.StudentDao">
+	
+	<resultMap id="stuMap" type="com.qfedu.pojo.Student">
+
+		<id column="no" property="no"></id>
+		<result column="name" property="name"></result>
+		<result column="sex" property="sex"></result>
+		<result column="birthday" property="birthday"></result>
+		<result column="cardno" property="cardno"></result>
+		<result column="school" property="school"></result>
+		<result column="education" property="education"></result>
+		<result column="gid" property="gid"></result>
+		<result column="flag" property="flag"></result>
+		<result column="email" property="email"></result>
+		<result column="qq" property="qq"></result>
+		<result column="phone" property="phone"></result>
+		<result column="introno" property="introno"></result>
+		<result column="createdate" property="createdate"></result>
+		<result column="photo" property="photo"></result>
+		<association property="grade" resultMap="gradeMap"></association>
+		<association property="staff" resultMap="staffMap"></association>
+
+	</resultMap>
+
+	<resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
+		<id column="id" property="id"></id>
+		<result column="gname" property="name"></result>
+		<result column="gflag" property="flag"></result>
+		<result column="week" property="week"></result>
+		<result column="createdate" property="createdate"></result>
+		<result column="location" property="location"></result>
+		<result column="cid" property="cid"></result>
+	</resultMap>
+
+	<resultMap id="staffMap" type="com.qfedu.pojo.Staff">
+		<id column="no" property="no"></id>
+		<result column="name" property="name"></result>
+		<result column="did" property="did"></result>
+		<result column="flag" property="flag"></result>
+		<result column="sex" property="sex"></result>
+		<result column="email" property="email"></result>
+		<result column="qq" property="qq"></result>
+		<result column="phone" property="phone"></result>
+		<result column="createdate" property="createdate"></result>
+		<result column="photo" property="photo"></result>
+
+	</resultMap>
+
+	<select id="findAllStu" resultMap="stuMap">
+
+		select s.*,g.id,g.name as gname,g.flag as gname,g.week,g.createdate,g.location,g.cid from t_student s left outer join t_grade g on s.gid = g.id
+
+	</select>
+
+	<select id="findGradeAll" resultMap="gradeMap">
+		select g.id,g.name as gname,g.flag as gname,g.week,g.createdate,g.location,g.cid from t_grade g
+	</select>
+
+	<select id="findStaffAll" resultMap="staffMap">
+		select * from t_staff
+
+	</select>
+
+	<insert id="addStudent" parameterType="com.qfedu.pojo.Student">
+		insert into t_student(no,name,sex,birthday,cardno,school,education,gid,flag,email,qq,phone,introno,createdate) values(#{no},#{name},#{sex},#{birthday},#{cardno},#{school},#{education},#{gid},#{flag},#{email},#{qq},#{phone},#{introno},#{createdate})
+
+	</insert>
+
+
+	<!--  批量插入 -->
+	<insert id="addBatch" parameterType="list">
+		insert into t_student(no,name,sex,birthday,cardno,school,education,gid,flag,email,qq,phone,introno,createdate) values
+		<foreach collection="list" item="stu" separator=",">
+			(#{stu.no},#{stu.name},#{stu.sex},#{stu.birthday},#{stu.cardno},#{stu.school},#{stu.education},#{stu.gid},#{stu.flag},#{stu.email},#{stu.qq},#{stu.phone},#{stu.introno},#{stu.createdate})
+		</foreach>
+
+	</insert>
+
+</mapper>
