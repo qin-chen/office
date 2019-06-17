@@ -34,7 +34,15 @@
 		      ,{field: 'name', title: '学科名称'} 
 		      ,{field: 'week', title: '周数', sort: true}
 		      ,{field: 'createdate', title: '成立日期', sort: true}
-		      ,{field: 'type', title: '类型', sort: true}
+		      ,{field: 'type', title: '类型', templet :function(d){
+					  if(d.type == 1){
+						  return "普通";
+					  }else if(d.type == 2){
+						  return"精品";
+					  }else{
+						  return"业余";
+					  }
+				  }}
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
 		  });
