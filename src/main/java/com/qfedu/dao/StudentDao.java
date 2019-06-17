@@ -19,4 +19,8 @@ public interface StudentDao {
     void addStudent(Student student);
 
     void addBatch(List<Student> stuList);
+
+    Student selectByNo(String no);
+
+    void studentdelete(String no);
 }

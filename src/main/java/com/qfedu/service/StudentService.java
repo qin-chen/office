@@ -21,4 +21,8 @@ public interface StudentService {
 
 
     void addStus(List<Student> stuList);
+
+    Student selectByNo(String no);
+
+    void studentdelete(String no);
 }

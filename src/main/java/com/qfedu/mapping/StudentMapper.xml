@@ -81,4 +81,12 @@
 
 	</insert>
 
+	<select id="selectByNo" parameterType="String" resultMap="stuMap">
+		select * from t_student where no = #{no}
+	</select>
+
+	<delete id="studentdelete" parameterType="String">
+		delete from t_student where no = #{no};
+	</delete>
+
 </mapper>
