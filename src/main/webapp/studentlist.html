@@ -50,16 +50,18 @@
 		        var data = obj.data;
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除学员?', function(index){
+						obj.del();//删除表格中的对应行数据
+						layer.close(index);
 		                $.ajax({
-		                    url: "studentdelete.do",
+		                    url: "stu/studentdelete.do",
 		                    type: "POST",
 		                    data:"no="+data.no,
 		                    success: function(data){
 		                        if(data.code==1000){
-		                            obj.del();//删除表格中的对应行数据
-		                            layer.close(index);
+									//alert(data.info);
 		                            layer.msg("删除成功", {icon: 6});
 		                        }else{
+									//alert(data.info);
 		                            layer.msg("删除失败", {icon: 5});
 		                        }
 		                    }

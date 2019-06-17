@@ -59,5 +59,15 @@ public class StudentServiceImpl implements StudentService {
         studentDao.addBatch(stuList);
     }
 
+    @Override
+    public Student selectByNo(String no) {
+        return studentDao.selectByNo(no);
+    }
+
+    @Override
+    public void studentdelete(String no) {
+        studentDao.studentdelete(no);
+    }
+
 
 }

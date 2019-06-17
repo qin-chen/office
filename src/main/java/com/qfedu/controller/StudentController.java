@@ -96,4 +96,19 @@ public class StudentController {
     }
 
 
+    @RequestMapping("/studentdelete.do")
+    public JsonBean studentdelete(String no){
+        System.out.println(no+"-------------");
+        Student stu = studentService.selectByNo(no);
+        if(stu != null){
+            studentService.studentdelete(no);
+            return new JsonBean(1000,"删除成功");
+        }else{
+            return new JsonBean(0,"删除失败");
+        }
+
+
+    }
+
+
 }
