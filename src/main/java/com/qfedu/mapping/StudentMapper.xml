@@ -23,25 +23,10 @@
 		<result column="createdate" property="createdate"></result>
 		<result column="photo" property="photo"></result>
 		<association property="grade" resultMap="com.qfedu.dao.GradeDao.gradeMap"></association>
-		<association property="staff" resultMap="staffMap"></association>
+		<association property="staff" resultMap="com.qfedu.dao.StaffDao.staffmap"></association>
 
 	</resultMap>
 
-
-
-	<resultMap id="staffMap" type="com.qfedu.pojo.Staff">
-		<id column="no" property="no"></id>
-		<result column="name" property="name"></result>
-		<result column="did" property="did"></result>
-		<result column="flag" property="flag"></result>
-		<result column="sex" property="sex"></result>
-		<result column="email" property="email"></result>
-		<result column="qq" property="qq"></result>
-		<result column="phone" property="phone"></result>
-		<result column="createdate" property="createdate"></result>
-		<result column="photo" property="photo"></result>
-
-	</resultMap>
 
 	<select id="findAllStu" resultMap="stuMap">
 
@@ -51,7 +36,7 @@
 
 
 
-	<select id="findStaffAll" resultMap="staffMap">
+	<select id="findStaffAll" resultMap="com.qfedu.dao.StaffDao.staffmap">
 		select * from t_staff
 
 	</select>

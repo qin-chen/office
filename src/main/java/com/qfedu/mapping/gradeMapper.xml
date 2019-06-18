@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.qfedu.dao.GradeDao">
+
+	<resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
+		<id column="gid" property="id"></id>
+		<result column="gname" property="name"></result>
+		<result column="gflag" property="flag"></result>
+		<result column="gweek" property="week"></result>
+		<result column="gcreatedate" property="createdate"></result>
+		<result column="location" property="location"></result>
+		<result column="cid" property="cid"></result>
+		<association property="course" resultMap="com.qfedu.dao.CourseDao.resultCourse"></association>
+		<association property="student" resultMap="com.qfedu.dao.StudentDao.stuMap"></association>
+	</resultMap>
+
+
+	<select id="findAllGrade" resultMap="gradeMap">
+		select c.*,g.id as gid,g.name as gname,g.flag as gflag,g.week as gweek,g.createdate as gcreatedate,g.location,g.cid from t_grade g LEFT OUTER JOIN t_course c on g.cid = c.id
+	</select>
+
+	<select id="findGradeAll" resultMap="gradeMap">
+		select g.id as gid,g.name as gname,g.flag as gname,g.week,g.createdate,g.location,g.cid from t_grade g
+	</select>
+
+
+</mapper>
