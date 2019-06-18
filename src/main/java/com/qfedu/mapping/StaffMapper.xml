@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.qfedu.dao.StaffDao">
+    <resultMap id="staffmap" type="com.qfedu.pojo.Staff">
+        <id column="no" property="no"></id>
+        <result column="name" property="name"></result>
+        <result column="did" property="did"></result>
+        <result column="flag" property="flag"></result>
+        <result column="sex" property="sex"></result>
+        <result column="email" property="email"></result>
+        <result column="qq" property="qq"></result>
+        <result column="phone" property="phone"></result>
+        <result column="createdate" property="createdate"></result>
+        <association property="depart" resultMap="com.qfedu.dao.DepartDao.departmap"></association>
+    </resultMap>
+    <select id="selectAll" resultMap="staffmap">
+     SELECT s.`no`,s.`name`,s.did,s.flag,s.sex,s.email,s.qq,s.phone,s.createdate,s.photo , d.id,d.`name` as dname, d.flag as dflag from t_staff s
+     INNER JOIN t_depart d
+     WHERE s.did =d.id
+    </select>
+    <insert id="addStaff" parameterType="com.qfedu.pojo.Staff">
+        INSERT into t_staff (no,name,did,flag,sex,email,qq,phone,createdate,photo)
+        VALUES (#{no},#{name},#{did},#{flag},#{sex},#{email},#{qq},#{phone},#{createdate},#{photo})
+    </insert>
+    <update id="updateStaff" parameterType="com.qfedu.dao.StaffDao">
+        UPDATE t_staff set name =#{name},did=#{did},flag=#{flag},sex=#{sex},email=#{email},
+        qq=#{qq},phone=#{phone},createdate=#{createdate} where no=#{no}
+    </update>
+    <delete id="delStaff" parameterType="string">
+        DELETE  from t_staff where no=#{no}
+    </delete>
+    <select id="selectStaffByNo" parameterType="string" resultMap="staffmap">
+        select * from t_staff where no=#{no}
+    </select>
+</mapper>
