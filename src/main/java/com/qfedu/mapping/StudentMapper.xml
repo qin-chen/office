@@ -22,20 +22,12 @@
 		<result column="introno" property="introno"></result>
 		<result column="createdate" property="createdate"></result>
 		<result column="photo" property="photo"></result>
-		<association property="grade" resultMap="gradeMap"></association>
+		<association property="grade" resultMap="com.qfedu.dao.GradeDao.gradeMap"></association>
 		<association property="staff" resultMap="staffMap"></association>
 
 	</resultMap>
 
-	<resultMap id="gradeMap" type="com.qfedu.pojo.Grade">
-		<id column="id" property="id"></id>
-		<result column="gname" property="name"></result>
-		<result column="gflag" property="flag"></result>
-		<result column="week" property="week"></result>
-		<result column="createdate" property="createdate"></result>
-		<result column="location" property="location"></result>
-		<result column="cid" property="cid"></result>
-	</resultMap>
+
 
 	<resultMap id="staffMap" type="com.qfedu.pojo.Staff">
 		<id column="no" property="no"></id>
@@ -57,9 +49,7 @@
 
 	</select>
 
-	<select id="findGradeAll" resultMap="gradeMap">
-		select g.id,g.name as gname,g.flag as gname,g.week,g.createdate,g.location,g.cid from t_grade g
-	</select>
+
 
 	<select id="findStaffAll" resultMap="staffMap">
 		select * from t_staff
