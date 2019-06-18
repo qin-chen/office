@@ -40,14 +40,14 @@ public class StudentController {
         return map;
     }
 
-    //查询班级列表
+    /*//查询班级列表
     @RequestMapping("/gradeall.do")
     @ResponseBody
     public List<Grade> findGradeAll(){
         List<Grade> list = studentService.findGradeAll();
         System.out.println(list+"++++++++");
         return list;
-    }
+    }*/
 
     //查询员工列表
     @RequestMapping("/staffall.do")

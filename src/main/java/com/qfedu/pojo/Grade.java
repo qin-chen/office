@@ -11,10 +11,29 @@ public class Grade {
     private String name;
     private Integer flag;
     private Integer week;
-    private Date createdate;
+    private String createdate;
     private String location;
     private Integer cid;
+    private Course course;
+    private String cname;
+    private Student student;
+    private Integer count;
 
+    public String getCname() {
+        return course.getName();
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     public Integer getId() {
         return id;
@@ -48,11 +67,11 @@ public class Grade {
         this.week = week;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 
@@ -72,7 +91,6 @@ public class Grade {
         this.cid = cid;
     }
 
-
     @Override
     public String toString() {
         return "Grade{" +
@@ -83,6 +101,8 @@ public class Grade {
                 ", createdate=" + createdate +
                 ", location='" + location + '\'' +
                 ", cid=" + cid +
+                ", course=" + course +
+                ", cname='" + cname + '\'' +
                 '}';
     }
 }
