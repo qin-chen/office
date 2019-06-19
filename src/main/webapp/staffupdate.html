@@ -35,6 +35,7 @@
 			$("#no").val(obj.no)
 			$("#name").val(obj.name);
 			$("#cds").val(obj.did);
+			$("#cds").text(obj.depart.name);
 			var sex = obj.sex;
 			$("input[name='sex'][value="+sex+"]").attr("checked",'checked');
 			$("#email").val(obj.email);
@@ -64,8 +65,8 @@
 	            <div class="layui-input-block">
 	                <select name="did"  id="cds">
 	       				<option value="-1">--请选择部门--</option>
-	       				<option value="1">教学部</option>
-	       				<option value="2">就业部</option>
+	       				<!--<option value="1">教学部</option>
+	       				<option value="2">就业部</option>-->
 	      			</select>
 	            </div>
             </div>
@@ -166,17 +167,17 @@
 									layedit.sync(editIndex);
 								}
 							});
-					//initData();
+					initData();
 		});
 		//初始化数据
-		/*function initData() {
+		function initData() {
 			$.get("depart/departall.do",null,function(arr){
 				for(i=0;i<arr.length;i++){
 					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
 				}
 				form.render("select");
 			})
-		}*/
+		}
 	</script>
 </body>
 </html>
