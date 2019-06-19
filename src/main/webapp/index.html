@@ -105,10 +105,10 @@
             for(i=0;i<arr.length;i++){
                 var parent=arr[i];
                 s+="<li class='layui-nav-item '> <a href='javascript:;' id='"+parent.id+"'><i class=\"fa "+parent.icon+"\"></i>&nbsp;"+parent.title+"</a>";
-                if(parent.childs.length>0){
+                if(parent.authorityList.length>0){
                     s+="<dl class='layui-nav-child'>";
-                    for(j=0;j<parent.childs.length;j++){
-                        var child=parent.childs[j];
+                    for(j=0;j<parent.authorityList.length;j++){
+                        var child=parent.authorityList[j];
                         s+="<dd><a href='javascript:;' id='"+child.id+"' onclick='showTab("+child.id+",\""+child.aurl+"\",\""+child.title+"\")'>&nbsp;&nbsp;&nbsp;&nbsp;"+child.title+"</a></dd>";
                     }
                     s+="</dl>";
