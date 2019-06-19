@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.TcheckDao">
+    <resultMap id="resultCheck" type="com.qfedu.pojo.Tcheck">
+        <id column="id" property="id"></id>
+        <result column="info" property="info"></result>
+        <result column="type" property="type"></result>
+        <result column="startname" property="startname"></result>
+        <result column="startno" property="startno"></result>
+        <result column="startdate" property="startDate"></result>
+        <result column="enddate" property="endDate"></result>
+        <result column="days" property="days"></result>
+        <result column="pid" property="pid"></result>
+        <result column="flag" property="flag"></result>
+        <association property="staff" resultMap="staffmap"></association>
+    </resultMap>
+    <resultMap id="staffmap" type="com.qfedu.pojo.Staff">
+        <id column="no" property="no"></id>
+        <result column="name" property="name"></result>
+        <result column="did" property="did"></result>
+        <result column="flag" property="flag"></result>
+        <result column="sex" property="sex"></result>
+        <result column="email" property="email"></result>
+        <result column="qq" property="qq"></result>
+        <result column="phone" property="phone"></result>
+        <result column="createdate" property="createdate"></result>
+        <result column="manger" property="manger"></result>
+    </resultMap>
+    <select id="findAll" resultMap="resultCheck" parameterType="String">
+        select * from t_check c left join t_staff s1 on c.startno = s1.no left join t_staff s2 on s1.manger = s2.no
+        where c.startno = #{no}
+    </select>
+    <delete id="deleteById" parameterType="Integer">
+        delete from t_check where id = #{id}
+    </delete>
+    <select id="selectById" parameterType="Integer" resultMap="resultCheck">
+        select * from t_check where id = #{id}
+    </select>
+    <update id="updateById" parameterType="Integer">
+        update t_check set flag = #{param2} where id = #{param1}
+    </update>
+    <select id="findAllById" parameterType="String" resultMap="resultCheck">
+        select * from t_check c
+        left join t_staff s1
+        on c.startno = s1.no
+        where s1.manger = #{manger} and c.flag = 1
+    </select>
+    <insert id="addByTcheck" parameterType="com.qfedu.pojo.Tcheck">
+        insert into t_check(info,type,startname,startno,startdate,enddate,days,pid,flag)
+        values(#{info},#{type},#{startname},#{startno},#{startDate},#{endDate},#{days},#{pid},#{flag})
+    </insert>
+</mapper>
