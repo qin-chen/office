@@ -33,7 +33,13 @@
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
 		      ,{field: 'name', title: '班级名称'} 
 		      ,{field: 'cname', title: '学科名称'}
-		      ,{field: 'count', title: '班级人数', sort: true}
+		      ,{field: 'count', title: '班级人数', templet :function(d){
+					  if (d.count == null ){
+						  return 0;
+					  }else{
+						  return d.count;
+					  }
+				  }}
 		      ,{field: 'week', title: '周数', sort: true}
 		      ,{field: 'location', title: '位置'}
 		      ,{field: 'createdate', title: '开班日期', sort: true}
@@ -45,14 +51,15 @@
 		        var data = obj.data;
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除班级?', function(index){
+						obj.del();//删除表格中的对应行数据
+						layer.close(index);
 		                $.ajax({
 		                    url: "gradedelete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){
 		                        if(data.code==1000){
-		                            obj.del();//删除表格中的对应行数据
-		                            layer.close(index);
+
 		                            layer.msg("删除成功", {icon: 6});
 		                        }else{
 		                            layer.msg("删除失败", {icon: 5});

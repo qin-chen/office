@@ -22,10 +22,11 @@
 		<result column="introno" property="introno"></result>
 		<result column="createdate" property="createdate"></result>
 		<result column="photo" property="photo"></result>
-		<association property="grade" resultMap="com.qfedu.dao.GradeDao.gradeMap"></association>
+		<association property="grade" resultMap="com.qfedu.dao.GradeDao1.gradeMap"></association>
 		<association property="staff" resultMap="com.qfedu.dao.StaffDao.staffmap"></association>
 
 	</resultMap>
+
 
 
 	<select id="findAllStu" resultMap="stuMap">

@@ -22,4 +22,9 @@
     <delete id="deleteById" parameterType="Integer">
         delete from t_course where id = #{id}
     </delete>
+
+    <select id="findAllCourse" resultMap="resultCourse">
+         select * from t_course
+    </select>
+
 </mapper>

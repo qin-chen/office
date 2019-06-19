@@ -15,4 +15,6 @@ public interface CourseService {
     void insertByCourse(Course course);
 
     void deleteById(Integer id);
+
+    List<Course> findAllCourse();
 }

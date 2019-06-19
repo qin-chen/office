@@ -19,8 +19,24 @@ public class Grade {
     private Student student;
     private Integer count;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
     public String getCname() {
-        return course.getName();
+            return course.getName();
     }
 
     public void setCname(String cname) {
@@ -98,11 +114,13 @@ public class Grade {
                 ", name='" + name + '\'' +
                 ", flag=" + flag +
                 ", week=" + week +
-                ", createdate=" + createdate +
+                ", createdate='" + createdate + '\'' +
                 ", location='" + location + '\'' +
                 ", cid=" + cid +
                 ", course=" + course +
                 ", cname='" + cname + '\'' +
+                ", student=" + student +
+                ", count=" + count +
                 '}';
     }
 }

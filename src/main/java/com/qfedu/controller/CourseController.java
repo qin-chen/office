@@ -50,4 +50,13 @@ public class CourseController {
         courseService.deleteById(id);
         return new JsonBean(1000,null);
     }
+
+    @RequestMapping("/courseall.do")
+    @ResponseBody
+    public List<Course> findAllCourse(){
+        List<Course> list = courseService.findAllCourse();
+        System.out.println(list+"+++++++++");
+        return list;
+    }
+
 }

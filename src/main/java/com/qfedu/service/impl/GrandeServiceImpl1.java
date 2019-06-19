@@ -40,4 +40,24 @@ public class GrandeServiceImpl1 implements GradeService1 {
         return gradeDao1.findGradeAll();
     }
 
+    @Override
+    public void gradeupdate(Grade grade) {
+        gradeDao1.gradeupdate(grade);
+    }
+
+    @Override
+    public void gradeadd(Grade grade) {
+        gradeDao1.gradeadd(grade);
+    }
+
+    @Override
+    public Grade selectById(Integer id) {
+        return gradeDao1.selectById(id);
+    }
+
+    @Override
+    public void gradedeleteById(Integer id) {
+        gradeDao1.gradedeleteById(id);
+    }
+
 }

@@ -13,4 +13,11 @@ public interface GradeDao1 {
 
     List<Grade> findGradeAll();
 
+    void gradeupdate(Grade grade);
+
+    void gradeadd(Grade grade);
+
+    Grade selectById(Integer id);
+
+    void gradedeleteById(Integer id);
 }
