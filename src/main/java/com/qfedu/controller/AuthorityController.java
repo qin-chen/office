@@ -22,10 +22,11 @@ public class AuthorityController {
 
     @RequestMapping("/usermenu.do")
     @ResponseBody
-    public List<Authority> selectUsermenuById(HttpServletRequest request){
+    public List<Authority> selectUsermenuById(String id,HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user666");
         System.out.println(user);
-        List<Authority> list = authorityService.selectUsermenuById(user.getId());
+        System.out.println(id+"---------");
+        List<Authority> list = authorityService.selectUsermenuById(Integer.parseInt(id));
         return list;
     }
 
