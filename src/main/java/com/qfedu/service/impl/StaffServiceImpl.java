@@ -53,4 +53,9 @@ public class StaffServiceImpl implements StaffService {
     public Staff selectStaffByNo(String no) {
         return staffDao.selectStaffByNo(no);
     }
+
+    @Override
+    public void addStaffBatch(List<Staff> staffList) {
+        staffDao.addStaffBatch(staffList);
+    }
 }

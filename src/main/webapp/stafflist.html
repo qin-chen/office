@@ -13,6 +13,7 @@
 <body>
 	<div class="layui-container">
 		<a href="staffadd.html" class="layui-btn">添加员工</a>
+		<a href="staffbatch.html" class="layui-btn">批量添加员工</a>
 		<table id="tbdata" lay-filter="tbop"></table>
 		<script type="text/html" id="barop">
     		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -39,6 +40,7 @@
 		      ,{field: 'qq', title: 'qq号'}
 		      ,{field: 'email', title: '邮箱'}
 		      ,{field: 'createdate', title: '入职日期'}
+				  //,{field:'photo',title:'头像',hide:true}
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
 		  });

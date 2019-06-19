@@ -10,4 +10,12 @@ import java.util.List;
 public interface DepartDao {
     // public List<Depart> selectAll();
     public List<Depart> selectDepartName(); // 查询部门名字
+
+    List<Depart> selectAllDepart();
+
+    void updateDepart(Depart depart);
+
+    void addDepart(Depart depart);
+
+    void deleteDepart(Integer id);
 }

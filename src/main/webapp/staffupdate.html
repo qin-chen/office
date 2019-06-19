@@ -42,6 +42,9 @@
 			$("#qq").val(obj.qq);
 			$("#date").val(obj.createdate);
 			$("#p1").val(obj.photo);
+			//alert(obj.photo)
+			$("#img1")[0].src=obj.photo;
+			//$("#img1")[0].attr("src",obj.photo);
 		}
 	</script>
 </head>
@@ -163,7 +166,7 @@
 									layedit.sync(editIndex);
 								}
 							});
-					initData();
+					//initData();
 		});
 		//初始化数据
 		/*function initData() {

@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         <mapper namespace="com.qfedu.dao.DepartDao">
-    <resultMap id="departmap" type="com.qfedu.pojo.Depart">
+    <resultMap id="departmap" type="com.qfedu.vo.DepartVo">
         <id column="id" property="id"></id>
         <result column="dname" property="name"></result>
         <result column="createtime" property="createtime"></result>
         <result column="dflag" property="flag"></result>
+        <result column="did" property="did"></result>
+        <result column="dcount" property="dcount"></result>
     </resultMap>
     <select id="selectDepartName" resultMap="departmap">
         SELECT id,name as dname from t_depart
     </select>
+    <select id="selectAllDepart" resultMap="departmap">
+       /* select id ,name as dname ,createtime ,flag as dflag from t_depart*/
+
+        select d.id,d.name as dname ,d.flag,d.createtime,s.dcount from t_depart d
+        left JOIN
+        (select did ,count(0) as dcount from t_staff GROUP BY did) s
+        on d.id = s.did
+    </select>
+    <update id="updateDepart" parameterType="com.qfedu.pojo.Depart">
+        update t_depart set  name=#{name},createtime=#{createtime},flag=#{flag} where id=#{id}
+    </update>
+    <insert id="addDepart">
+        INSERT  into t_depart (name,createtime,flag)
+        VALUES
+        (#{name},#{createtime},#{flag})
+    </insert>
+    <delete id="deleteDepart" parameterType="Integer">
+        DELETE from t_depart where id =#{id}
+    </delete>
 </mapper>

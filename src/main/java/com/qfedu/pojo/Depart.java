@@ -8,7 +8,7 @@ import java.util.Date;
 public class Depart {
     private Integer id;
     private String name;
-    private Date createtime;
+    private String createtime;
     private  Integer flag;
 
     public Integer getId() {
@@ -27,11 +27,11 @@ public class Depart {
         this.name = name;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 

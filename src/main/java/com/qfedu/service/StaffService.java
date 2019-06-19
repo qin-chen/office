@@ -18,4 +18,6 @@ public interface StaffService {
     void delStaff(String no);
 
     Staff selectStaffByNo(String no);
+
+    void addStaffBatch(List<Staff> staffList);
 }
