@@ -10,4 +10,12 @@ import java.util.List;
 public interface AuthorityDao {
 
     List<Authority> selectUsermenuById(Integer id);
+
+    List<Authority> findAllAuthority();
+
+    List<Authority> selectParentRoot(Integer parentId);
+
+    void authorityadd(Authority authority);
+
+    void deleteById(Integer id);
 }

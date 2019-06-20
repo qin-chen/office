@@ -41,5 +41,23 @@ inner join t_role r
 
     </select>
 
+    <select id="findAllAuthority" resultType="com.qfedu.pojo.Authority">
+
+        SELECT * from t_authority
+
+    </select>
+
+    <select id="selectParentRoot" parameterType="Integer" resultType="com.qfedu.pojo.Authority">
+        SELECT * from t_authority where parentId = #{parentId}
+    </select>
+
+    <insert id="authorityadd" parameterType="com.qfedu.pojo.Authority">
+        insert into t_authority VALUES (NULL,#{aicon},#{aurl},#{parentId},#{title},#{type})
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from t_authority where id = #{id}
+    </delete>
+
 
 </mapper>
