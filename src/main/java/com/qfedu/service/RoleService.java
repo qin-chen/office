@@ -1,5 +1,6 @@
 package com.qfedu.service;
 
+import com.qfedu.pojo.Authority;
 import com.qfedu.pojo.Role;
 import com.qfedu.pojo.User;
 
@@ -16,4 +17,12 @@ public interface RoleService {
     List<Role> findAllRole();
 
     void userroleedit(Integer id, String rids);
+
+    List<Role> findAllByRole(Role role);
+
+    List<Authority> findAllAuthority();
+
+    void roleedit(Integer id, String[] aids);
+
+    void roledelById01(Integer id);
 }

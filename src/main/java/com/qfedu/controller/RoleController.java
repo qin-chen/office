@@ -2,6 +2,7 @@ package com.qfedu.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.qfedu.pojo.Authority;
 import com.qfedu.pojo.Role;
 import com.qfedu.pojo.User;
 import com.qfedu.service.RoleService;
@@ -49,6 +50,33 @@ public class RoleController {
     @RequestMapping("/userroleedit.do")
     public JsonBean userroleedit(Integer id, String rids){
         roleService.userroleedit(id,rids);
+        return new JsonBean(1000,null);
+    }
+    @RequestMapping("/rolepage.do")
+    public Map<String,Object> list02(Integer page, Integer limit,Role role){
+        //PageHelper.startPage(page,limit);
+        List<Role> list = roleService.findAllByRole(role);//查询所有数据
+        //long total = ((Page)list).getTotal();//总记录数
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        //map.put("count",total);//总记录数，赋值
+        map.put("data",list);//查询所有数据，赋值
+        return map;
+    }
+    @RequestMapping("/roleall2.do")
+    public List<Authority> roleall02(){
+        List<Authority> authorityList = roleService.findAllAuthority();
+        return authorityList;
+    }
+    @RequestMapping("/roleedit.do")
+    public JsonBean roleedit(Integer id, String[] aids){
+        roleService.roleedit(id,aids);
+        return new JsonBean(1000,null);
+    }
+    @RequestMapping("/roledel.do")
+    public JsonBean roledel01(Integer id){
+        roleService.roledelById01(id);
         return new JsonBean(1000,null);
     }
 }

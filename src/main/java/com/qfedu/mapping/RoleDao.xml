@@ -9,7 +9,6 @@
         <result column="name" property="name"></result>
         <result column="flag" property="flag"></result>
         <result column="headphoto" property="headPhoto"></result>
-
         <collection property="role" ofType="String">
             <constructor>
                 <arg column="info"></arg>
@@ -20,7 +19,16 @@
                 <arg column="rid"></arg>
             </constructor>
         </collection>
-
+    </resultMap>
+    <resultMap id="roleLimitmap" type="com.qfedu.pojo.Role">
+        <id column="id" property="id"></id>
+        <result column="info" property="info"></result>
+        <result column="name" property="name"></result>
+        <collection property="aids" ofType="Integer">
+            <constructor>
+                <arg column="aid"></arg>
+            </constructor>
+        </collection>
     </resultMap>
     <select id="findAll" parameterType="com.qfedu.pojo.User" resultMap="userLimitmap">
         select u.*,ur.rid,r.id as cid,r.info as info,r.name as cname from t_user u left join t_userrole ur on u.id = ur.uid left join t_role r on ur.rid = r.id
@@ -28,7 +36,7 @@
             <if test="no != null and no!=''">
                 no = #{no}
             </if>
-            <if test="flag != 0">
+            <if test="flag != null and flag != ''">
                 and flag = #{flag}
             </if>
         </where>
@@ -45,4 +53,21 @@
     <insert id="userroleedit" parameterType="Integer">
         insert into t_userrole values (#{param1},#{param2})
     </insert>
+    <select id="findAllByRole" parameterType="com.qfedu.pojo.Role" resultMap="roleLimitmap">
+        select r.*,ra.aid from t_role r left join t_roleauthority ra on r.id = ra.rid left join t_authority a on ra.aid = a.id
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+        </where>
+    </select>
+    <delete id="roleedel" parameterType="Integer">
+        delete from t_roleauthority where rid = #{id}
+    </delete>
+    <insert id="roleedit" parameterType="Integer">
+        insert into t_roleauthority values (#{param1},#{param2})
+    </insert>
+    <delete id="roledelById01" parameterType="Integer">
+        delete r,ra from t_role r left join t_roleauthority ra on r.id = ra.rid where r.id = #{id}
+    </delete>
 </mapper>

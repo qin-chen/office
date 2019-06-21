@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 /**
  * Created by 星尘 on 2019/6/20.
  */
@@ -7,6 +9,7 @@ public class Role {
     private Integer id;
     private  String info;
     private  String name;
+    private List<Integer> aids;
 
     @Override
     public String toString() {
@@ -14,7 +17,16 @@ public class Role {
                 "id=" + id +
                 ", info='" + info + '\'' +
                 ", name='" + name + '\'' +
+                ", aids=" + aids +
                 '}';
+    }
+
+    public List<Integer> getAids() {
+        return aids;
+    }
+
+    public void setAids(List<Integer> aids) {
+        this.aids = aids;
     }
 
     public Integer getId() {

@@ -1,8 +1,11 @@
 package com.qfedu.service.impl;
 
+import com.qfedu.dao.AuthorityDao;
 import com.qfedu.dao.RoleDao;
+import com.qfedu.pojo.Authority;
 import com.qfedu.pojo.Role;
 import com.qfedu.pojo.User;
+import com.qfedu.service.AuthorityService;
 import com.qfedu.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private AuthorityDao authorityDao;
 
     @Override
     public List<User> findAll(User user) {
@@ -40,5 +45,29 @@ public class RoleServiceImpl implements RoleService {
             Integer rid1 = Integer.parseInt(rid);
             roleDao.userroleedit(id, rid1);
         }
+    }
+
+    @Override
+    public List<Role> findAllByRole(Role role) {
+        return roleDao.findAllByRole(role);
+    }
+
+    @Override
+    public List<Authority> findAllAuthority() {
+        return authorityDao.findAllAuthority();
+    }
+
+    @Override
+    public void roleedit(Integer id, String[] aids) {
+        roleDao.roleedel(id);
+        for(String aid:aids) {
+            Integer rid1 = Integer.parseInt(aid);
+            roleDao.roleedit(id, rid1);
+        }
+    }
+
+    @Override
+    public void roledelById01(Integer id) {
+        roleDao.roledelById01(id);
     }
 }

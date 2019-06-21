@@ -18,4 +18,12 @@ public interface RoleDao {
     void userroleedel(Integer id);
 
     void userroleedit(Integer id, Integer rid);
+
+    List<Role> findAllByRole(Role role);
+
+    void roleedel(Integer id);
+
+    void roleedit(Integer id, Integer rid1);
+
+    void roledelById01(Integer id);
 }
