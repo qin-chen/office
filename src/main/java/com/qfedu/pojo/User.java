@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 /**
  * Created by 星尘 on 2019/6/14.
  */
@@ -10,6 +12,30 @@ public class User {
     private String name;
     private Integer flag;
     private String headPhoto;
+    private List<String> role;
+    private List<Integer> rids;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", no='" + no + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", flag=" + flag +
+                ", headPhoto='" + headPhoto + '\'' +
+                ", role=" + role +
+                ", rids=" + rids +
+                '}';
+    }
+
+    public List<Integer> getRids() {
+        return rids;
+    }
+
+    public void setRids(List<Integer> rids) {
+        this.rids = rids;
+    }
 
     public Integer getId() {
         return id;
@@ -57,5 +83,13 @@ public class User {
 
     public void setHeadPhoto(String headPhoto) {
         this.headPhoto = headPhoto;
+    }
+
+    public List<String> getRole() {
+        return role;
+    }
+
+    public void setRole(List<String> role) {
+        this.role = role;
     }
 }
