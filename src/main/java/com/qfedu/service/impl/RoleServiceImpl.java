@@ -40,10 +40,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void userroleedit(Integer id, String rids) {
         roleDao.userroleedel(id);
-        String[] arr = rids.split(",");
-        for(String rid:arr) {
-            Integer rid1 = Integer.parseInt(rid);
-            roleDao.userroleedit(id, rid1);
+        if(rids!=null && rids!=""){
+            String[] arr = rids.split(",");
+            for(String rid:arr) {
+                Integer rid1 = Integer.parseInt(rid);
+                roleDao.userroleedit(id, rid1);
+            }
         }
     }
 
@@ -60,9 +62,11 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void roleedit(Integer id, String[] aids) {
         roleDao.roleedel(id);
-        for(String aid:aids) {
-            Integer rid1 = Integer.parseInt(aid);
-            roleDao.roleedit(id, rid1);
+        if(aids != null){
+            for(String aid:aids) {
+                Integer rid1 = Integer.parseInt(aid);
+                roleDao.roleedit(id, rid1);
+            }
         }
     }
 
